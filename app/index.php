@@ -1,5 +1,7 @@
 <?php include 'header.php'; ?>
-<?php require_once 'comments.php'; ?>
+<?php require_once 'connect.php'; ?>
+<?php require_once 'function.php'; ?>
+<?php require_once 'handler.php'; ?>
 <div id="app">
     <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
         <div class="container">
@@ -41,18 +43,20 @@
                             <div class="alert alert-success" role="alert">
                                 Комментарий успешно добавлен
                             </div>
-                            <?php foreach($commentsUsers as $comment) : ?>
+                            <?php if(!empty($messages)): ?>
+                            <?php foreach($messages as $message) : ?>
                             <div class="media">
                                 <img src="img/no-user.jpg" class="mr-3" alt="..." width="64" height="64">
                                 <div class="media-body">
-                                    <h5 class="mt-0"><?php echo $comment['name']; ?></h5>
-                                    <span><small><?php echo $comment['date']; ?></small></span>
+                                    <h5 class="mt-0"><?=nl2br(htmlspecialchars( $message['name'] ))?></h5>
+                                    <span><small><?=nl2br(htmlspecialchars($message['date']))?></small></span>
                                     <p>
-                                    <?php echo $comment['text']; ?>
+                                    <?=nl2br(htmlspecialchars($message['text']))?>
                                     </p>
                                 </div>
                             </div>
                             <?php endforeach ?>
+                        <?php endif ?>
                         </div>
                     </div>
                 </div>
@@ -62,7 +66,7 @@
                         <div class="card-header"><h3>Оставить комментарий</h3></div>
 
                         <div class="card-body">
-                            <form action="/store" method="post">
+                            <form action="handler.php" method="post">
                                 <div class="form-group">
                                     <label for="exampleFormControlTextarea1">Имя</label>
                                     <input name="name" class="form-control" id="exampleFormControlTextarea1" />
