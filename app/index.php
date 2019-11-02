@@ -2,6 +2,9 @@
 <?php require_once 'connect.php'; ?>
 <?php require_once 'function.php'; ?>
 <?php require_once 'handler.php'; ?>
+<?php
+
+?>
 <div id="app">
     <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
         <div class="container">
@@ -40,9 +43,6 @@
                         <div class="card-header"><h3>Комментарии</h3></div>
 
                         <div class="card-body">
-                            <div class="alert alert-success" role="alert">
-                                Комментарий успешно добавлен
-                            </div>
                             <?php if(!empty($messages)): ?>
                             <?php foreach($messages as $message) : ?>
                             <div class="media">
@@ -69,13 +69,14 @@
                             <form action="handler.php" method="post">
                                 <div class="form-group">
                                     <label for="exampleFormControlTextarea1">Имя</label>
-                                    <input name="name" class="form-control" id="exampleFormControlTextarea1" />
+                                    <input required name="name" class="form-control" id="exampleFormControlTextarea1" />
                                 </div>
                                 <div class="form-group">
                                     <label for="exampleFormControlTextarea1">Сообщение</label>
-                                    <textarea name="text" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                                    <textarea required name="text" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
                                 </div>
-                                <button type="submit" class="btn btn-success">Отправить</button>
+                                <button  onclick="showMessage();" type="submit" class="btn btn-success">Отправить</button>
+                                <div id="show" class="alert alert-success hide" role="alert">Комментарий успешно добавлен</div>
                             </form>
                         </div>
                     </div>
