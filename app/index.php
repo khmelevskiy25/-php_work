@@ -2,9 +2,6 @@
 <?php require_once 'connect.php'; ?>
 <?php require_once 'function.php'; ?>
 <?php require_once 'handler.php'; ?>
-<?php
-
-?>
 <div id="app">
     <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
         <div class="container">
